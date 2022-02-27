@@ -70,7 +70,7 @@ public final class FaceVerification {
   }
 
   public static void getSessionToken(final SessionTokenCallback callback) {
-    Request tokenRequest = createRequest("/verify/face/session", "post", new JSONObject());
+    Request tokenRequest = createRequest("/session-token", "get", new JSONObject());
 
     sendRequest(tokenRequest, new APICallback() {
       @Override
@@ -117,7 +117,8 @@ public final class FaceVerification {
     Request.Builder request = new Request.Builder()
       .url(_serverURL + url)
       .header("Content-Type", "application/json")
-      .header("Authorization", "Bearer " + _jwtAccessToken);
+      .header("Authorization", "Bearer " + _jwtAccessToken)
+      .header("X-Device-Key", "dpGtjouHJOaRJnk1TY3kfT5f0Q3fN2rJ");
 
     switch (method) {
       case "post":
